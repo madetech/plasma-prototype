@@ -1,0 +1,41 @@
+{% from 'input/macro.njk' import input %}
+{% from 'back-link/macro.njk' import backLink %}
+{% extends 'layout.html' %}
+{% block pageTitle %}
+  NHS.UK prototype kit
+{% endblock %}
+
+{% block beforeContent %}
+{% endblock %}
+
+{% block content %}
+  <div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-two-thirds">
+        <form action="/test-medium" method="post">
+            {{ input({
+                "label": {
+                  "text": "What is your NHS donor ID number?",
+                  "classes": "nhsuk-label--l",
+                  "isPageHeading": true
+                },
+                  "hint": {
+                  "text": "Your NHS donor ID number is a 10 digit number that you will find in the email you received."
+                },
+                "id": "donor-id",
+                "name": "donor-id",
+                "classes": "nhsuk-input--width-10"
+              }) }}
+
+              {{ backLink({
+                "href": "/index",
+                "text": "Go back"
+                }) }}
+              {{ button({
+                "text": "Save and continue"
+                }) }}
+        </form>
+        
+
+    </div>
+  </div>
+{% endblock %}

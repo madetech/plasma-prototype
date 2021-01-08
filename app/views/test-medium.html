@@ -1,0 +1,57 @@
+{% from 'radios/macro.njk' import radios %}
+{% from 'button/macro.njk' import button %}
+{% from 'back-link/macro.njk' import backLink %}
+{% extends 'layout.html' %}
+{% block pageTitle %}
+  NHS.UK prototype kit
+{% endblock %}
+
+{% block beforeContent %}
+{% endblock %}
+
+{% block content %}
+  <div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-two-thirds">
+      <form action="/submit-medium" method="post">
+        
+
+        {{ radios({
+          "idPrefix": "medium",
+          "name": "medium",
+          "fieldset": {
+            "legend": {
+              "text": "How would you like to complete your sample test?",
+              "classes": "nhsuk-fieldset__legend--l",
+              "isPageHeading": true
+            }
+          },
+          "items": [
+            {
+              "value": "postal",
+              "text": "Postal kit"
+            },
+            {
+              "value": "pharmacy",
+              "text": "Attend a pharmacy"
+            }
+          ]
+        }) }}
+
+
+
+        {{ backLink({
+        "href": "/donor-id",
+        "text": "Go back"
+        }) }}
+        {{ button({
+            "text": "Save and continue"
+            }) }}
+      </form>
+
+      
+
+        
+
+    </div>
+  </div>
+{% endblock %}
