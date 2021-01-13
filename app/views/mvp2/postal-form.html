@@ -1,0 +1,48 @@
+{% from 'radios/macro.njk' import radios %}
+{% from 'button/macro.njk' import button %}
+{% from 'back-link/macro.njk' import backLink %}
+{% extends '../layout.html' %}
+{% block pageTitle %}
+    NHS Blood and Transplant
+{% endblock %}
+
+{% block beforeContent %}
+{% endblock %}
+
+{% block content %}
+  <div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-two-thirds">
+      <form action="/mvp2/address" method="post">
+        {{ radios({
+          "idPrefix": "postal-address",
+          "name": "postal-address",
+          "fieldset": {
+            "legend": {
+              "text": "Where would you like us to send your sampling kit?",
+              "classes": "nhsuk-fieldset__legend--l",
+              "isPageHeading": true
+            }
+          },
+          "items": [
+            {
+              "value": "address",
+              "text": "3 Hornsby Road, M120AB"
+            },
+            {
+              "value": "new-address",
+              "text": "To a different address"
+            }
+          ]
+        }) }}
+        {{ backLink({
+          "href": "/mvp2/test-medium",
+          "text": "Go back"
+          }) }}
+          {{ button({
+              "text": "Save and continue"
+              }) }}
+      </form>
+    </div>
+  </div>
+{% endblock %}
+

@@ -1,9 +1,9 @@
 {% from 'radios/macro.njk' import radios %}
 {% from 'button/macro.njk' import button %}
 {% from 'back-link/macro.njk' import backLink %}
-{% extends 'layout.html' %}
+{% extends '../layout.html' %}
 {% block pageTitle %}
-  NHS.UK prototype kit
+    NHS Blood and Transplant
 {% endblock %}
 
 {% block beforeContent %}
@@ -12,7 +12,7 @@
 {% block content %}
   <div class="nhsuk-grid-row">
     <div class="nhsuk-grid-column-two-thirds">
-      <form action="/submit-medium" method="post">
+      <form action="/mvp/submit-medium" method="post">
         
 
         {{ radios({
@@ -28,11 +28,14 @@
           "items": [
             {
               "value": "postal",
-              "text": "Postal kit"
+              "text": "Postal kit - Recommended",
+              "hint": {
+                  "text": "Recieve a sample kit to your home with a prepaid return box."
+              }
             },
             {
               "value": "pharmacy",
-              "text": "Attend a pharmacy"
+              "text": "Choose a pharmacy and book a visit in person"
             }
           ]
         }) }}
@@ -40,7 +43,7 @@
 
 
         {{ backLink({
-        "href": "/donor-id",
+        "href": "/mvp/donor-id",
         "text": "Go back"
         }) }}
         {{ button({

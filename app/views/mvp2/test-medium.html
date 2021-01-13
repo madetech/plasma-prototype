@@ -1,0 +1,60 @@
+{% from 'radios/macro.njk' import radios %}
+{% from 'button/macro.njk' import button %}
+{% from 'back-link/macro.njk' import backLink %}
+{% extends '../layout.html' %}
+{% block pageTitle %}
+    NHS Blood and Transplant
+{% endblock %}
+
+{% block beforeContent %}
+{% endblock %}
+
+{% block content %}
+  <div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-two-thirds">
+      <form action="/mvp2/submit-medium" method="post">
+        
+
+        {{ radios({
+          "idPrefix": "medium",
+          "name": "medium",
+          "fieldset": {
+            "legend": {
+              "text": "How would you like to complete your sample test?",
+              "classes": "nhsuk-fieldset__legend--l",
+              "isPageHeading": true
+            }
+          },
+          "items": [
+            {
+              "value": "postal",
+              "text": "Postal kit - Recommended",
+              "hint": {
+                  "text": "Recieve a sample kit to your home with a prepaid return box."
+              }
+            },
+            {
+              "value": "pharmacy",
+              "text": "Choose a pharmacy and book a visit in person"
+            }
+          ]
+        }) }}
+
+
+
+        {{ backLink({
+        "href": "/mvp2/consent",
+        "text": "Go back"
+        }) }}
+        {{ button({
+            "text": "Save and continue"
+            }) }}
+      </form>
+
+      
+
+        
+
+    </div>
+  </div>
+{% endblock %}

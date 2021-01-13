@@ -1,0 +1,78 @@
+{% from 'checkboxes/macro.njk' import checkboxes %}
+{% from 'button/macro.njk' import button %}
+{% from 'back-link/macro.njk' import backLink %}
+{% extends 'layout.html' %}
+{% block pageTitle %}
+    NHS Blood and Transplant
+{% endblock %}
+
+{% block beforeContent %}
+{% endblock %}
+
+{% block content %}
+  <div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-two-thirds">
+      <form action="/submit-medium" method="post">
+
+        {{ checkboxes({
+            "idPrefix": "example",
+            "name": "example",
+            "fieldset": {
+              "legend": {
+                "text": "How can we contact you in the future?",
+                "classes": "nhsuk-fieldset__legend--l",
+                isPageHeading: true
+              }
+            },
+            "hint": {
+              "text": "Select all options that are relevant to you."
+            },
+            "items": [
+              {
+                "value": "email",
+                "text": "Email"
+              },
+              {
+                "value": "phone",
+                "text": "Phone"
+              },
+              {
+                "value": "text message",
+                "text": "Text message"
+              },
+              {
+                "value": "postal letter",
+                "text": "Postal letter"
+              }
+            ]
+          }) }}
+
+
+
+        {{ backLink({
+        "href": "/donor-id",
+        "text": "Go back"
+        }) }}
+        {{ button({
+            "text": "Save and continue"
+            }) }}
+      </form>
+
+      
+
+        
+
+    </div>
+  </div>
+{% endblock %}
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,56 @@
+{% from 'checkboxes/macro.njk' import checkboxes %}
+{% from 'button/macro.njk' import button %}
+{% from 'back-link/macro.njk' import backLink %}
+{% extends 'layout.html' %}
+{% block pageTitle %}
+    NHS Blood and Transplant
+{% endblock %}
+
+{% block beforeContent %}
+{% endblock %}
+
+{% block content %}
+  <div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-two-thirds">
+      <form action="/mvp2/test-medium" method="post">
+        
+
+        {{ checkboxes({
+            "idPrefix": "example",
+            "name": "example",
+            "fieldset": {
+              "legend": {
+                "text": "Do you consent to your data being shared with our third parties who complete the blood test?",
+                "classes": "nhsuk-fieldset__legend--l",
+                isPageHeading: true
+              }
+            },
+            "hint": {
+              "text": "We have to share some of your data with external third parties who complete the blood test and do the analysis. Without this consent we cannot complete the test."
+            },
+            "items": [
+              {
+                "value": "consent",
+                "text": "I consent to my data being shared with third parties for testing purposes"
+              }
+            ]
+          }) }}
+
+
+
+        {{ backLink({
+        "href": "/mvp2/donor-id",
+        "text": "Go back"
+        }) }}
+        {{ button({
+            "text": "Save and continue"
+            }) }}
+      </form>
+
+      
+
+        
+
+    </div>
+  </div>
+{% endblock %}

@@ -4,22 +4,50 @@ const router = express.Router();
 
 // Add your routes here - above the module.exports line
 
-// Branching example
-router.post('/submit-medium', function (req, res) {
+// MVP ROUTES
+router.post('/mvp/submit-medium', function (req, res) {
+  var medium = req.session.data['medium']
 
-    // Make a variable and give it the value from 'know-nhs-number'
-    var medium = req.session.data['medium']
-  
-    // Check whether the variable matches a condition
-    if (medium == "postal"){
-      // Send user to next page
-      res.redirect('/postal-form')
-    }
-    else {
-      // Send user to ineligible page
-      res.redirect('/pharmacy-form')
-    }
-  
-  })
+  if (medium == "postal") {
+    res.redirect('/mvp/postal-form')
+  }
+  else {
+    res.redirect('/mvp/pharmacy-form')
+  }
+})
+
+router.post('/mvp/external-pharmacy', function (req, res) {
+  var pharmacy = req.session.data['pharmacy']
+
+  if (pharmacy == "boots") {
+    res.redirect('https://www.boots.com/')
+  }
+  else {
+    res.redirect('https://www.superdrug.com/')
+  }
+})
+
+// MVP2 ROUTES
+router.post('/mvp2/submit-medium', function (req, res) {
+  var medium = req.session.data['medium']
+
+  if (medium == "postal") {
+    res.redirect('/mvp2/postal-form')
+  }
+  else {
+    res.redirect('/mvp2/pharmacy-form')
+  }
+})
+
+router.post('/mvp2/address', function (req, res) {
+  var postalAddress = req.session.data['postal-address']
+
+  if (postalAddress == "address") {
+    res.redirect('/mvp2/postal-complete')
+  }
+  else {
+    res.redirect('/mvp2/new-address')
+  }
+})
 
 module.exports = router;

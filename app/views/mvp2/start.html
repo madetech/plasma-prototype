@@ -1,7 +1,7 @@
 
 {% from 'button/macro.njk' import button %}
 
-{% extends 'layout.html' %}
+{% extends '../layout.html' %}
 
 {% block pageTitle %}
   NHS Blood and Transplant
@@ -19,13 +19,21 @@
       </h1>
 
       <hr>
+
       <h2>
-        Flows
+        You can be the difference
       </h2>
-      <ol>
-        <li><a href="/mvp/start">MVP - Linking to external supplier journies</a></li>
-        <li><a href="/mvp2/start">Post MVP - Using APIs to keep users in our journey</a></li>
-      </ol>
+
+      <p>
+        Thank you for volunteering to have the antibody levels in your blood plasma tested to see if you would be a suitable candidate to donate convalescent blood plasma.
+      </p>
+
+      <form action="/mvp2/donor-id" method="get">
+        {{ button({
+          "text": "Book an antibody blood test"
+        }) }}
+      </form>
+
       <hr>
     </div>
   </div>
