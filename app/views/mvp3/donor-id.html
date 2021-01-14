@@ -1,0 +1,41 @@
+{% from 'input/macro.njk' import input %}
+{% from 'back-link/macro.njk' import backLink %}
+{% extends 'layout.html' %}
+{% block pageTitle %}
+    NHS Blood and Transplant
+{% endblock %}
+
+{% block beforeContent %}
+{% endblock %}
+
+{% block content %}
+  <div class="nhsuk-grid-row">
+    <div class="nhsuk-grid-column-two-thirds">
+        <form action="/mvp3/consent" method="post">
+            {{ input({
+                "label": {
+                  "text": "What is your ID number?",
+                  "classes": "nhsuk-label--l",
+                  "isPageHeading": true
+                },
+                  "hint": {
+                  "text": "This is the unique ID number on the email, SMS, or letter we sent you."
+                },
+                "id": "donor-id",
+                "name": "donor-id",
+                "classes": "nhsuk-input--width-10"
+              }) }}
+
+              {{ backLink({
+                "href": "/mvp3/start",
+                "text": "Go back"
+                }) }}
+              {{ button({
+                "text": "Save and continue"
+                }) }}
+        </form>
+        
+
+    </div>
+  </div>
+{% endblock %}

@@ -50,4 +50,16 @@ router.post('/mvp2/address', function (req, res) {
   }
 })
 
+// MVP3 ROUTES
+router.post('/mvp3/address', function (req, res) {
+  var postalAddress = req.session.data['postal-address']
+
+  if (postalAddress == "address") {
+    res.redirect('/mvp3/postal-complete')
+  }
+  else {
+    res.redirect('/mvp3/new-address')
+  }
+})
+
 module.exports = router;
